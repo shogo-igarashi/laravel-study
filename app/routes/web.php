@@ -38,7 +38,12 @@ Route::post('/task', function (Request $request) {
             ->withErrors($validator);
     }
 
-    // タスク作成処理…
+
+    $task = new Task;
+    $task->name = $request->name;
+    $task->save();
+
+    return redirect('/');
 });
 
 /**
