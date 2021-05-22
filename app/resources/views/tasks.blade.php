@@ -6,7 +6,7 @@
 
     <div class="panel-body">
         <!-- バリデーションエラーの表示 -->
-{{--    @include('common.errors')--}}
+    @include('common.errors')
 
     <!-- 新タスクフォーム -->
         <form action="{{ url('task') }}" method="POST" class="form-horizontal">
