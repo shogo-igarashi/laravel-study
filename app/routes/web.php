@@ -20,8 +20,13 @@ use Illuminate\Support\Facades\Validator;
 /**
  * タスクダッシュボード表示
  */
+
 Route::get('/', function () {
-    //
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+
+    return view('tasks', [
+        'tasks' => $tasks
+    ]);
 });
 
 /**
@@ -51,8 +56,4 @@ Route::post('/task', function (Request $request) {
  */
 Route::delete('/task/{task}', function (Task $task) {
     //
-});
-
-Route::get('/', function () {
-    return view('tasks');
 });
