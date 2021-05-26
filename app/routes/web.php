@@ -59,3 +59,8 @@ Route::delete('/task/{task}', function (Task $task) {
 
     return redirect('/');
 });
+
+//追記
+Route::group(['prefix'=>'member'], function () {
+    Route::get('index', 'MemberController@index')->name('member.index');
+});

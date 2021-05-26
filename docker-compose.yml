@@ -44,7 +44,7 @@ services:
     volumes:
       - laravel-db:/var/lib/mysql
     ports:
-      - 3306:3306
+      - 13306:3306
 
 volumes:
   laravel-db:
