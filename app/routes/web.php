@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,14 @@ use Illuminate\Support\Facades\Validator;
 |
 */
 
+
+//追記
+Route::group(['prefix'=>'member'], function () {
+    Route::get('index', [MemberController::class, 'index'])->name('member.index');
+    Route::get('create', [MemberController::class, 'create'])->name('member.create');
+
+
+});
 
 /**
  * タスクダッシュボード表示
@@ -58,9 +67,4 @@ Route::delete('/task/{task}', function (Task $task) {
     $task->delete();
 
     return redirect('/');
-});
-
-//追記
-Route::group(['prefix'=>'member'], function () {
-    Route::get('index', 'MemberController@index')->name('member.index');
 });
