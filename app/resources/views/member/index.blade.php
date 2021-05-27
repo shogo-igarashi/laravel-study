@@ -15,4 +15,6 @@
             <td>{{$member->email}}</td>
         </tr>
     @endforeach
+
+    <a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
 </table>

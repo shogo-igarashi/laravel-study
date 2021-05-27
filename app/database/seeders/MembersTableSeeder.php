@@ -13,19 +13,17 @@ class MembersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('members')->insert(
+        \DB::table('members')->insert(
             [
                 [
-                    'name'=>'五十嵐',
-                    'telephone'=>'xxxx-xxxxx',
-                    'email'=>'igarashi@example.com',
-                    'created_at'=>now(),
-                    'updated_at'=>now(),
-
+                    'name' => '山田',
+                    'telephone' => 'xxxx-xxxxx',
+                    'email' => 'yamada@example.com',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
             ]
         );
-        $this->call(MembersTableSeeder::class);
     }
 }
