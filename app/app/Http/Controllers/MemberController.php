@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\StoreMember;
 
 class MemberController extends Controller
 {
@@ -41,7 +41,7 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(StoreMember $request)
     {
         $member=new Member;
 

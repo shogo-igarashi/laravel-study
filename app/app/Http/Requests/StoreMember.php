@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+//追加
+use Illuminate\Validation\Rule;
+
 class StoreMember extends FormRequest
 {
     /**
@@ -13,7 +16,7 @@ class StoreMember extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,27 @@ class StoreMember extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            //追加
+            'name' => [
+                'string',
+                'required',
+                'max:20'
+            ],
+
+            'telephone' => [
+                'string',
+                'nullable',
+                'max:13',
+                'unique:members'
+            ],
+
+            'email' => [
+                'nullable',
+                'max:255',
+                'email',
+                'unique:members'
+            ]
         ];
     }
 }
