@@ -86,11 +86,21 @@ class MemberController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        //
+        $member=Member::find($id);
+
+        $member->name=$request->input('name');
+        $member->telephone=$request->input('telephone');
+        $member->email=$request->input('email');
+
+        //DBに保存
+        $member->save();
+
+        //処理が終わったらmember/indexにリダイレクト
+        return redirect('member/index');
     }
 
     /**
