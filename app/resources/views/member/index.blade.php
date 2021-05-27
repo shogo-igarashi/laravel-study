@@ -13,8 +13,9 @@
             <td>{{$member->name}}</td>
             <td>{{$member->telephone}}</td>
             <td>{{$member->email}}</td>
+            <td><th><a href="{{route('member.show',['id'=>$member->id])}}">詳細</a></th></td>
         </tr>
     @endforeach
-
-    <a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
 </table>
+    <a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
+

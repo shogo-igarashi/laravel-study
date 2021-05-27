@@ -22,8 +22,9 @@ use Illuminate\Support\Facades\Validator;
 Route::group(['prefix'=>'member'], function () {
     Route::get('index', [MemberController::class, 'index'])->name('member.index');
     Route::get('create', [MemberController::class, 'create'])->name('member.create');
-
     Route::post('store', [MemberController::class, 'store'])->name('member.store');
+
+    Route::get('show/{id}', [MemberController::class, 'show'])->name('member.show');
 });
 
 /**
