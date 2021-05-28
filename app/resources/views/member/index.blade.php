@@ -13,9 +13,12 @@
             <td>{{$member->name}}</td>
             <td>{{$member->telephone}}</td>
             <td>{{$member->email}}</td>
-            <td><th><a href="{{route('member.show',['id'=>$member->id])}}">詳細</a></th></td>
+            <td>
+            <th><a href="{{route('member.show',['id'=>$member->id])}}">詳細</a></th>
+            </td>
         </tr>
     @endforeach
 </table>
-    <a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
-
+<a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
+<!--　ページ送りのUI　-->
+{{$members->links()}}

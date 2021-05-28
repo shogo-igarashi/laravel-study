@@ -20,7 +20,8 @@ class MemberController extends Controller
         //memberテーブルからname,telephone,emailを$membersに格納
         $members=DB::table('members')
             ->select('id', 'name', 'telephone', 'email')
-            ->get();
+            //↓ 1ページに表示する件数を指定
+            ->paginate(20);
 
         //viewを返す(compactでviewに$membersを渡す)
         return view('member/index', compact('members'));
