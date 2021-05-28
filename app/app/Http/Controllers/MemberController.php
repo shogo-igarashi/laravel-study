@@ -21,7 +21,7 @@ class MemberController extends Controller
         $members=DB::table('members')
             ->select('id', 'name', 'telephone', 'email')
             //↓ 1ページに表示する件数を指定
-            ->paginate(20);
+            ->paginate(5);
 
         //viewを返す(compactでviewに$membersを渡す)
         return view('member/index', compact('members'));
@@ -118,5 +118,34 @@ class MemberController extends Controller
         $member->delete();
 
         return redirect('member/index');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+
+    public function search(Request $request)
+    {
+        $serach=$request->input('q');
+
+        $query=DB::table('members');
+
+        //検索ワードの全角スペースを半角スペースに変換
+        $serach_spaceharf=mb_convert_kana($serach, 's');
+
+
+        //検索ワードを半角スペースで区切る
+        $keyword_array=preg_split('/[\s]+/', $serach_spaceharf, -1, PREG_SPLIT_NO_EMPTY);
+
+        //検索ワードをループで回してマッチするレコードを探す
+        foreach ($keyword_array as $keyword) {
+            $query->where('name', 'like', '%'.$keyword.'%');
+        }
+
+        $query->select('id', 'name', 'telephone', 'email');
+        $members=$query->paginate(20);
+
+        return view('member/index', compact('members'));
     }
 }

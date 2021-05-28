@@ -26,8 +26,10 @@ Route::group(['prefix'=>'member'], function () {
     Route::get('show/{id}', [MemberController::class, 'show'])->name('member.show');
     Route::get('edit/{id}', [MemberController::class, 'edit'])->name('member.edit');
     Route::post('update/{id}', [MemberController::class, 'update'])->name('member.update');
+    Route::post('destroy/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
 
-    Route::post('destroy/{id}',[MemberController::class, 'destroy'])->name('member.destroy');
+    Route::get('search', [MemberController::class, 'search'])->name('member.search');
+
 });
 
 /**

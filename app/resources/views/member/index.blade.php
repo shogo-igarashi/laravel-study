@@ -20,5 +20,14 @@
     @endforeach
 </table>
 <a href="{{ route('member.create') }}">{{ __('新規作成') }}</a>
+
+<form method="GET" action="{{route('member.search')}}">
+    @csrf
+    <div>
+        <label for="form-search">検索</label>
+        <input type="search" name="q" id="form-search">
+    </div>
+
+    <button type="submit">検索</button>
 <!--　ページ送りのUI　-->
 {{$members->links()}}
