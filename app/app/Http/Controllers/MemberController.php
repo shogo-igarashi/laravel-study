@@ -6,6 +6,7 @@ use App\Models\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreMember;
+use App\Http\Requests\UpdateMember;
 
 class MemberController extends Controller
 {
@@ -88,7 +89,7 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMember $request, $id)
     {
         $member=Member::find($id);
 
