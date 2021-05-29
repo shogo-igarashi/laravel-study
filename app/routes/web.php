@@ -21,13 +21,7 @@ use Illuminate\Support\Facades\Validator;
  * タスクダッシュボード表示
  */
 
-Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
-});
+Route::get('/', \App\Http\Controllers\Task\IndexController::class);
 
 /**
  * 新タスク追加
