@@ -21,14 +21,14 @@ use Illuminate\Support\Facades\Validator;
  * タスクダッシュボード表示
  */
 
-Route::get('/', \App\Http\Controllers\Task\IndexController::class);
+Route::get('/', \App\Http\Controllers\Task\IndexController::class) -> name('task.index');
 
 /**
  * 新タスク追加
  */
-Route::post('/task', \App\Http\Controllers\Task\StoreController::class );
+Route::post('/task', \App\Http\Controllers\Task\StoreController::class )-> name('task.add');
 
 /**
  * タスク削除
  */
-Route::delete('/task/{task}', \App\Http\Controllers\Task\DeleteController::class);
+Route::delete('/task/{task}', \App\Http\Controllers\Task\DeleteController::class)-> name('task.delete');
