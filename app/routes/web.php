@@ -31,8 +31,4 @@ Route::post('/task', \App\Http\Controllers\Task\StoreController::class );
 /**
  * タスク削除
  */
-Route::delete('/task/{task}', function (Task $task) {
-    $task->delete();
-
-    return redirect('/');
-});
+Route::delete('/task/{task}', \App\Http\Controllers\Task\DeleteController::class);
